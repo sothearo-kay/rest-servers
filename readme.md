@@ -58,8 +58,8 @@ The API follows the **REST architecture** to facilitate communication between th
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/rest-api-ts.git
-cd rest-api-ts
+git clone https://github.com/sothearo-kay/rest-servers.git
+cd rest-servers
 ```
 
 ### 2. Install Dependencies
