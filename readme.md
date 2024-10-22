@@ -3,7 +3,7 @@
 This project demonstrates how to build a REST API using **Express** and **TypeScript**. It covers essential REST concepts like CRUD operations, a database layer, authentication with **JWT**, and validation with **Zod**. You’ll also learn how to use **Docker** for containerization and **NestJS** for larger, more structured backend applications.
 
 <br>
-...
+***
 
 ## Table of Contents
 
@@ -18,14 +18,14 @@ This project demonstrates how to build a REST API using **Express** and **TypeSc
 - [ ] Future Improvements
 
 <br>
-...
+***
 
 ## Getting Started
 
 This project helps you understand and build a **RESTful API** using TypeScript. Follow the instructions below to get the server running locally.
 
 <br>
-...
+***
 
 ## Architecture Overview
 
@@ -45,7 +45,7 @@ The API follows the **REST architecture** to facilitate communication between th
   - **Validation:** **Zod** for request validation.
 
 <br>
-...
+***
 
 ## Features
 - TypeScript for type safety across the project.
