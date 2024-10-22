@@ -1,0 +1,24 @@
+{
+  "name": "rest-servers",
+  "version": "1.0.0",
+  "description": "This project demonstrates how to build a REST API using **Express** and **TypeScript**. It covers essential REST concepts like CRUD operations, a database layer, authentication with **JWT**, and validation with **Zod**. You’ll also learn how to use **Docker** for containerization and **NestJS** for larger, more structured backend applications.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.7",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
