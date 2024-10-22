@@ -1,28 +1,45 @@
-import { Task } from "../models/task.model";
+import { PrismaClient, Task } from "@prisma/client";
 
-let tasks: Task[] = [];
-let currentId = 1;
+const prisma = new PrismaClient();
 
-const createTask = (task: Omit<Task, "id">): Task => {
-  const newTask = { ...task, id: currentId++ };
-  tasks.push(newTask);
-  return newTask;
+const createTask = async (
+  title: string,
+  tag: string,
+  dueDate: string
+): Promise<Task> => {
+  const task = prisma.task.create({
+    data: { title, tag, dueDate },
+  });
+  return task;
 };
 
-const getTaskById = (id: number): Task | undefined =>
-  tasks.find((task) => task.id === id);
-
-const getAllTasks = (): Task[] => tasks;
-
-const deleteTaskById = (id: number) => {
-  tasks = tasks.filter((task) => task.id !== id);
+const getTaskById = async (id: number): Promise<Task | null> => {
+  return await prisma.task.findUnique({
+    where: { id },
+  });
 };
 
-const getTasksByTag = (tag: string): Task[] =>
-  tasks.filter((task) => task.tag === tag);
+const getAllTasks = async (): Promise<Task[]> => {
+  return await prisma.task.findMany();
+};
 
-const getTasksDueByDate = (dueDate: string): Task[] =>
-  tasks.filter((task) => task.dueDate === dueDate);
+const deleteTaskById = async (id: number): Promise<Task> => {
+  return await prisma.task.delete({
+    where: { id },
+  });
+};
+
+const getTasksByTag = async (tag: string): Promise<Task[]> => {
+  return await prisma.task.findMany({
+    where: { tag },
+  });
+};
+
+const getTasksDueByDate = async (dueDate: string): Promise<Task[]> => {
+  return await prisma.task.findMany({
+    where: { dueDate },
+  });
+};
 
 export {
   createTask,

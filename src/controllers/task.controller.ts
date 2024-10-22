@@ -9,44 +9,73 @@ import {
 } from "../services/task.service";
 
 // Create a task
-const handleCreateTask = (req: Request, res: Response) => {
+const handleCreateTask = async (req: Request, res: Response) => {
   const { title, tag, dueDate } = req.body;
-  const newTask = createTask({ title, tag, dueDate });
-  res.status(201).json({ id: newTask.id });
+  try {
+    const newTask = await createTask(title, tag, dueDate);
+    res.status(201).json({ id: newTask.id });
+  } catch (error) {
+    res.status(500).json({ message: "Error creating task", error });
+  }
 };
 
 // Get a task by ID
-const handleGetTaskById = (req: Request, res: Response) => {
-  const task = getTaskById(parseInt(req.params.taskid));
+const handleGetTaskById = async (req: Request, res: Response) => {
+  try {
+    const task = await getTaskById(parseInt(req.params.taskid));
 
-  if (!task) {
-    res.status(404).json({ message: "Task not found" });
-    return;
+    if (!task) {
+      res.status(404).json({ message: "Task not found" });
+      return;
+    }
+    res.json(task);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching task", error });
   }
-  res.json(task);
 };
 
 // Get all tasks
-const handleGetAllTasks = (req: Request, res: Response) => {
-  res.json(getAllTasks());
+const handleGetAllTasks = async (req: Request, res: Response) => {
+  try {
+    const tasks = await getAllTasks();
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching tasks", error });
+  }
 };
 
 // Delete a task by ID
-const handleDeleteTaskById = (req: Request, res: Response) => {
-  deleteTaskById(parseInt(req.params.taskid));
-  res.status(204).send();
+const handleDeleteTaskById = async (req: Request, res: Response) => {
+  try {
+    await deleteTaskById(parseInt(req.params.taskid));
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting task", error });
+  }
 };
 
 // Get tasks by tag
-const handleGetTasksByTag = (req: Request, res: Response) => {
-  res.json(getTasksByTag(req.params.tagname));
+const handleGetTasksByTag = async (req: Request, res: Response) => {
+  try {
+    const tasks = await getTasksByTag(req.params.tagname);
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching tasks by tag", error });
+  }
 };
 
 // Get tasks due by date
-const handleGetTasksDueByDate = (req: Request, res: Response) => {
+const handleGetTasksDueByDate = async (req: Request, res: Response) => {
   const { yy, mm, dd } = req.params;
   const dueDate = `${yy}-${mm}-${dd}`;
-  res.json(getTasksDueByDate(dueDate));
+  try {
+    const tasks = await getTasksDueByDate(dueDate);
+    res.json(tasks);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error fetching tasks due by date", error });
+  }
 };
 
 export {

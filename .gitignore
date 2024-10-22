@@ -19,3 +19,10 @@ dist/
 
 # nodemon debug file
 .pids
+
+# Ignore SQLite database file
+dev.db
+dev.db-journal
+
+# Ignore Prisma migration history
+migrations/
