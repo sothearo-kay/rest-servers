@@ -1,10 +1,9 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import taskRoutes from "./task.routes";
 
 const router = Router();
 
-// Root route
-router.get("/", (req: Request, res: Response) => {
-  res.send("Hello, TypeScript + Node.js!");
-});
+// Register all routes
+router.use(taskRoutes);
 
 export default router;
