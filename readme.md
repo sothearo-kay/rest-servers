@@ -97,7 +97,7 @@ npm run start
 ### 5. Folder Structure
 
 ```graphql
-rest-api-ts/
+rest-servers/
 ├── prisma/
 │   ├── schema.prisma       # Prisma schema file
 │   └── dev.db              # SQLite database file (created automatically)
