@@ -1,6 +1,6 @@
 # REST API with TypeScript and Express
 
-This project demonstrates how to build a REST API using **Express** and **TypeScript**. It covers essential REST concepts like CRUD operations, a database layer, authentication with **JWT**, and validation with **Zod**. You’ll also learn how to use **Docker** for containerization and **NestJS** for larger, more structured backend applications.
+This project demonstrates how to build a REST API using **Express** and **TypeScript**. It covers essential REST concepts like CRUD operations, a database layer, authentication with **JWT**, and validation with **Zod**. You’ll also learn how to use **Docker** for containerization.
 
 <br>
 
@@ -30,16 +30,16 @@ The API follows the **REST architecture** to facilitate communication between th
 
 - **HTTP Methods:**
 
-  - **GET** - Fetch resources
-  - **POST** - Create resources
-  - **PUT** - Update resources
-  - **DELETE** - Delete resources
+  1. **GET** - Fetch resources
+  2. **POST** - Create resources
+  3. **PUT** - Update resources
+  4. **DELETE** - Delete resources
 
 - **Technologies Used:**
-  - **Express:** Minimal framework for building APIs.
-  - **Database Layer:** Integration with **Prisma ORM**.
-  - **Authentication:** **JWT** (JSON Web Tokens) for user authentication.
-  - **Validation:** **Zod** for request validation.
+  1. **Express:** Minimal framework for building APIs.
+  2. **Database Layer:** Integration with **Prisma ORM**.
+  3. **Authentication:** **JWT** (JSON Web Tokens) for user authentication.
+  4. **Validation:** **Zod** for request validation.
 
 <br>
 
@@ -49,7 +49,7 @@ The API follows the **REST architecture** to facilitate communication between th
 - CRUD operations with **Express**.
 - Authentication with **JWT**.
 - Data validation with **Zod**.
-  Containerized deployment using Docker.
+- Containerized deployment using **Docker**.
 
 <br>
 
@@ -91,7 +91,7 @@ prisma generate
 ### 4. Run the Server
 
 ```bash
-npm run start
+npm run dev
 ```
 
 ### 5. Folder Structure

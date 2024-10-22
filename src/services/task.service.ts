@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 const createTask = async (
   title: string,
   tag: string,
-  dueDate: string
+  dueDate: string,
 ): Promise<Task> => {
   const task = prisma.task.create({
     data: { title, tag, dueDate },

@@ -10,11 +10,11 @@ import {
 
 const router = Router();
 
-router.post("/task", handleCreateTask);
-router.get("/task/:taskid", handleGetTaskById);
-router.get("/task", handleGetAllTasks);
-router.delete("/task/:taskid", handleDeleteTaskById);
-router.get("/task/tag/:tagname", handleGetTasksByTag);
-router.get("/task/due/:yy/:mm/:dd", handleGetTasksDueByDate);
+router.post("/", handleCreateTask);
+router.get("/:taskid", handleGetTaskById);
+router.get("/", handleGetAllTasks);
+router.delete("/:taskid", handleDeleteTaskById);
+router.get("/tag/:tagname", handleGetTasksByTag);
+router.get("/due/:yy/:mm/:dd", handleGetTasksDueByDate);
 
 export default router;
