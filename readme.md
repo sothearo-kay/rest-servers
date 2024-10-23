@@ -13,7 +13,7 @@ This project demonstrates how to build a REST API using **Express** and **TypeSc
 - [ ] API Documentation
 - [x] Authentication (JWT)
 - [x] Validation (Zod)
-- [ ] Containerization (Docker)
+- [x] Containerization (Docker)
 - [ ] Future Improvements
 
 <br>

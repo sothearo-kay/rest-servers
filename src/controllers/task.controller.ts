@@ -1,3 +1,4 @@
+import { ZodError } from "zod";
 import { Request, Response } from "express";
 import {
   createTask,
@@ -13,12 +14,18 @@ import { taskSchema } from "../schemas/task.schema";
 
 // Create a task
 const handleCreateTask = async (req: Request, res: Response) => {
-  const { userId, title, tag, dueDate } = taskSchema.parse(req.body);
   try {
+    const { userId, title, tag, dueDate } = taskSchema.parse(req.body);
     const newTask = await createTask(userId, title, tag, dueDate);
     res.status(201).json({ id: newTask.id });
   } catch (error) {
-    res.status(500).json({ message: "Error creating task", error });
+    if (error instanceof ZodError) {
+      res
+        .status(400)
+        .json({ message: "Validation error", errors: error.errors });
+    } else {
+      res.status(500).json({ message: "Internal server error" });
+    }
   }
 };
 
