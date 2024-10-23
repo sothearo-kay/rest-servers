@@ -13,10 +13,25 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+// User Model (Auth)
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  tasks     Task[] // One to many relationship to Task
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Task Model
 model Task {
   id        Int      @id @default(autoincrement())
   title     String
+  completed Boolean  @default(false)
   tag       String
   dueDate   String
+  userId    Int // Foreign key to User
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 }

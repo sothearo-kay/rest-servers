@@ -28,18 +28,22 @@ This project helps you understand and build a **RESTful API** using TypeScript. 
 
 The API follows the **REST architecture** to facilitate communication between the client and the backend server.
 
-- **HTTP Methods:**
+### HTTP Methods
 
-  1. **GET** - Fetch resources
-  2. **POST** - Create resources
-  3. **PUT** - Update resources
-  4. **DELETE** - Delete resources
+| HTTP Method | Purpose                    | Use Case                                       |
+| ----------- | -------------------------- | ---------------------------------------------- |
+| **GET**     | Fetch resources            | Retrieve a list or specific resource           |
+| **POST**    | Create resources           | Create a new resource                          |
+| **PUT**     | Update resources           | Replace an existing resource entirely          |
+| **DELETE**  | Delete resources           | Remove a resource by identifier                |
+| **PATCH**   | Update resources partially | Modify specific fields of an existing resource |
 
-- **Technologies Used:**
-  1. **Express:** Minimal framework for building APIs.
-  2. **Database Layer:** Integration with **Prisma ORM**.
-  3. **Authentication:** **JWT** (JSON Web Tokens) for user authentication.
-  4. **Validation:** **Zod** for request validation.
+### Technologies Used
+
+1. **Express:** A minimal framework for building APIs.
+2. **Database Layer:** Integration with **Prisma ORM** for database operations.
+3. **Authentication:** Utilizes **JWT** (JSON Web Tokens) for user authentication.
+4. **Validation:** Uses **Zod** for validating incoming requests.
 
 <br>
 

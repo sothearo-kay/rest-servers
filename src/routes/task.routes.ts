@@ -6,6 +6,8 @@ import {
   handleDeleteTaskById,
   handleGetTasksByTag,
   handleGetTasksDueByDate,
+  handleGetTasksByUserId,
+  handleToggleTaskCompletion,
 } from "../controllers/task.controller";
 
 const router = Router();
@@ -16,5 +18,7 @@ router.get("/", handleGetAllTasks);
 router.delete("/:taskid", handleDeleteTaskById);
 router.get("/tag/:tagname", handleGetTasksByTag);
 router.get("/due/:yy/:mm/:dd", handleGetTasksDueByDate);
+router.get("/users/:userid", handleGetTasksByUserId);
+router.patch("/:taskid/toggle", handleToggleTaskCompletion);
 
 export default router;

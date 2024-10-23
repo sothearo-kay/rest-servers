@@ -3,12 +3,18 @@ import { PrismaClient, Task } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const createTask = async (
+  userId: number,
   title: string,
   tag: string,
-  dueDate: string,
+  dueDate: string
 ): Promise<Task> => {
   const task = prisma.task.create({
-    data: { title, tag, dueDate },
+    data: {
+      title,
+      tag,
+      dueDate,
+      user: { connect: { id: userId } },
+    },
   });
   return task;
 };
@@ -41,6 +47,28 @@ const getTasksDueByDate = async (dueDate: string): Promise<Task[]> => {
   });
 };
 
+const getTasksByUserId = async (userId: number): Promise<Task[]> => {
+  return await prisma.task.findMany({
+    where: { userId },
+  });
+};
+
+const toggleTaskCompletion = async (taskId: number): Promise<Task> => {
+  const task = await prisma.task.findUnique({
+    where: { id: taskId },
+  });
+
+  if (!task) {
+    throw new Error("Task not found");
+  }
+
+  // Toggle the completion status
+  return await prisma.task.update({
+    where: { id: taskId },
+    data: { completed: !task.completed },
+  });
+};
+
 export {
   createTask,
   getTaskById,
@@ -48,4 +76,6 @@ export {
   deleteTaskById,
   getTasksByTag,
   getTasksDueByDate,
+  getTasksByUserId,
+  toggleTaskCompletion,
 };

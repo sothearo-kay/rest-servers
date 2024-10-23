@@ -4,8 +4,8 @@ import { registerUser, loginUser } from "../services/auth.service";
 // User signup
 const handleSignup = async (req: Request, res: Response) => {
   try {
-    const { username, password } = req.body;
-    const token = await registerUser(username, password);
+    const { username, email, password } = req.body;
+    const token = await registerUser(username, email, password);
     res.status(201).json({ token }); // 201 created
   } catch (error: any) {
     res.status(400).json({ message: error.message });

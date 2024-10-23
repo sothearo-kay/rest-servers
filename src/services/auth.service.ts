@@ -1,12 +1,9 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { PrismaClient } from "@prisma/client";
 
-// generate by -> crypto.randomBytes(32).toString("hex");
+const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET!;
-
-console.log(process.env);
-
-const users = new Map<string, { passwordHash: string }>();
 
 const hashPassword = async (password: string) => {
   const salt = await bcrypt.genSalt(10);
@@ -21,15 +18,31 @@ const generateToken = async (username: string) => {
   return jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
 };
 
-const registerUser = async (username: string, password: string) => {
+const registerUser = async (
+  username: string,
+  email: string,
+  password: string
+) => {
   const passwordHash = await hashPassword(password);
-  users.set(username, { passwordHash });
+
+  // Store the user in the database
+  await prisma.user.create({
+    data: {
+      username,
+      email,
+      password: passwordHash,
+    },
+  });
+
   return generateToken(username);
 };
 
 const loginUser = async (username: string, password: string) => {
-  const user = users.get(username);
-  if (!user || !(await verifyPassword(password, user.passwordHash))) {
+  const user = await prisma.user.findUnique({
+    where: { username },
+  });
+
+  if (!user || !(await verifyPassword(password, user.password))) {
     throw new Error("Invalid credentials");
   }
   return generateToken(username);
