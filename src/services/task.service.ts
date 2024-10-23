@@ -53,6 +53,12 @@ const getTasksByUserId = async (userId: number): Promise<Task[]> => {
   });
 };
 
+const deleteUserTasks = async (userId: number): Promise<{ count: number }> => {
+  return await prisma.task.deleteMany({
+    where: { userId },
+  });
+};
+
 const toggleTaskCompletion = async (taskId: number): Promise<Task> => {
   const task = await prisma.task.findUnique({
     where: { id: taskId },
@@ -77,5 +83,6 @@ export {
   getTasksByTag,
   getTasksDueByDate,
   getTasksByUserId,
+  deleteUserTasks,
   toggleTaskCompletion,
 };

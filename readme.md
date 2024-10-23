@@ -11,8 +11,8 @@ This project demonstrates how to build a REST API using **Express** and **TypeSc
 - [x] Features
 - [x] Project Setup
 - [ ] API Documentation
-- [ ] Authentication (JWT)
-- [ ] Validation (Zod)
+- [x] Authentication (JWT)
+- [x] Validation (Zod)
 - [ ] Containerization (Docker)
 - [ ] Future Improvements
 
@@ -107,7 +107,9 @@ rest-servers/
 │   └── dev.db              # SQLite database file (created automatically)
 ├── src/
 │   ├── controllers/        # Controllers for handling requests
+|   ├── middleware/         # Middleware functions
 │   ├── routes/             # Express routes
+│   ├── schemas/            # Zod schemas for validation
 │   ├── services/           # Business logic and database interactions
 │   ├── app.ts              # Main application file for setting up Express
 │   └── index.ts            # Entry point for starting the server

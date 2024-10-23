@@ -9,10 +9,11 @@ import {
   getTasksByUserId,
   toggleTaskCompletion,
 } from "../services/task.service";
+import { taskSchema } from "../schemas/task.schema";
 
 // Create a task
 const handleCreateTask = async (req: Request, res: Response) => {
-  const { userId, title, tag, dueDate } = req.body;
+  const { userId, title, tag, dueDate } = taskSchema.parse(req.body);
   try {
     const newTask = await createTask(userId, title, tag, dueDate);
     res.status(201).json({ id: newTask.id });

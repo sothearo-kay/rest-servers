@@ -12,4 +12,10 @@ const getUserById = async (id: number): Promise<User | null> => {
   });
 };
 
-export { getUsers, getUserById };
+const deleteUserById = async (id: number): Promise<User> => {
+  return await prisma.user.delete({
+    where: { id },
+  });
+};
+
+export { getUsers, getUserById, deleteUserById };
