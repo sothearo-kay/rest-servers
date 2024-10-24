@@ -13,7 +13,7 @@ jobs:
         run: docker build -t sothearo/rest-servers .
 
       - name: Login to dockerHub
-        run: docker login -u sothearo --password-stdin ${{ secrets.DOCKERHUB_TOKEN }}
+        run: docker login -u sothearo -p ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push image to dockerhub
         run: docker push sothearo/rest-servers
